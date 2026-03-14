@@ -12,15 +12,17 @@ pipeline {
                 }
             }
         }
-        stage ("build iamge"){
+        stage ("build image"){
             steps {
                 script{
                     echo "building the docker image"
                     withCredentials([usernamePassword(credentialsId: 'docker-hub-repo', usernameVariable: 'USER', passwordVariable: 'PWD')])
-                    sh 'docker build -t brajbelivee/demo-java-maven-build:jma-2.0 .'
-                    sh "echo $PWD |docker login -u $USER --password-stdin"
-                    sh 'docker push brajbelivee/demo-java-maven-build:jma-2.0'
+                    {
 
+                        sh 'docker build -t brajbelivee/demo-java-maven-build:jma-2.0 .'
+                        sh "echo $PWD |docker login -u $USER --password-stdin"
+                        sh 'docker push brajbelivee/demo-java-maven-build:jma-2.0'
+                    }
                 }
             }
         }
