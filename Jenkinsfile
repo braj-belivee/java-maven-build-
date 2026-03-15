@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo 'building the application'
                 echo 'testing multi branch and normal pipeline both'
-                
+                echo "testing feature payment branch commits"
             }
         }
         stage('test') {
