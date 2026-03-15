@@ -5,6 +5,7 @@ pipeline {
         stage('build') {
             steps {
                 echo 'building the application'
+                echo 'testing multi branch and normal pipeline both'
                 
             }
         }
