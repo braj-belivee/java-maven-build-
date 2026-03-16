@@ -18,7 +18,7 @@ pipeline {
 
                 }
             }
-        }version
+        }
         stage ("build jar"){
             steps {
 
