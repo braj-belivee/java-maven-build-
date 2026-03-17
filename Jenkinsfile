@@ -62,7 +62,7 @@ pipeline {
         stage("github commit bump"){
             steps{
                 script{
-                    withCredentials([usernamePassword(credentialsId:'github-credentials', usernameVariable:'USER',passwordVariable:'PASS')]){
+                    withCredentials([usernamePassword(credentialsId:'github_us_w_tok', usernameVariable:'USER',passwordVariable:'PASS')]){
                         sh 'git config --global user.email "jenkins@example.com"'
                         sh 'git config --global user.name "jenkins"'
 
