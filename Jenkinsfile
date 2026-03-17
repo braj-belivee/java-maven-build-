@@ -74,7 +74,7 @@ pipeline {
                         sh "git remote set-url origin https://${USER}:${PWD}@github.com/braj-belivee/java-maven-build-.git"
                         sh 'git add .'
                         sh 'git commit -m "updating vesion pom.xml in git"'
-                        sh "git push https://${USER}:${PWD}@github.com/braj-belivee/java-maven-build-.git HEAD:maste"
+                        sh "git push https://${USER}:${PWD}@github.com/braj-belivee/java-maven-build-.git HEAD:master"
 
                     }
                 }
