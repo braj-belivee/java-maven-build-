@@ -59,5 +59,26 @@ pipeline {
                 }
             }
         }
+        stage("github commit bump"){
+            steps{
+                script{
+                    withCredentials([usernamePassword(credentialsId:'github-credentials', usernameVariable:'USER',passwordVariable:'PWD')]){
+                        sh 'git config --global user.email "jenkins@example.com"'
+                        sh 'git config --global user.name "jenkins"'
+
+                        
+                        sh 'git status'
+                        sh 'git branch'
+                        sh 'git config --list'
+
+                        sh "git remote set-url origin https://${USER}:${PWD}@github.com/braj-belivee/java-maven-build-.git"
+                        sh 'git add .'
+                        sh 'git commit -m "updating vesion pom.xml in git"'
+                        sh 'git push origin master'
+
+                    }
+                }
+            }
+        }
     }
 }
