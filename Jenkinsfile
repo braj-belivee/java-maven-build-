@@ -71,7 +71,7 @@ pipeline {
                         sh 'git branch'
                         sh 'git config --list'
 
-                        sh "git remote set-url origin https://${USER}:${PWD}@github.com/braj-belivee/java-maven-build-.git"
+                        sh "git remote set-url origin https://${USER}:${PWD}@github.com/braj-belivee/java-maven-build-"
                         sh 'git add .'
                         sh 'git commit -m "updating vesion pom.xml in git"'
                         sh 'git push origin HEAD:master'
