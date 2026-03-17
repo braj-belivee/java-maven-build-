@@ -41,7 +41,7 @@ pipeline {
 
                 script{
                     echo "building the docker image"
-                    withCredentials([usernamePassword(credentialsId:'docker-hub-repo', usernameVariable:'USER',passwordVariable:'PWD')])
+                    withCredentials([usernamePassword(credentialsId:'github-credentials', usernameVariable:'USER',passwordVariable:'PWD')])
                     {
                         sh "docker build -t brajbelivee/demo-java-maven-build:${IMAGE_NAME} ."
                         sh "echo $PWD |docker login -u $USER --password-stdin"
