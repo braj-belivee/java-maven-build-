@@ -9,6 +9,7 @@ The pipeline is fully automated — from code commit to deployment — including
 
 ## 🧩 Architecture Diagram
 
+```id="arch1"
         ┌──────────────┐
         │  Developer   │
         └──────┬───────┘
@@ -46,9 +47,11 @@ The pipeline is fully automated — from code commit to deployment — including
                │
                ▼
         ┌──────────────┐
-        │ Deployment   │ -->(In Progress)
+        │ Deployment   │
         │ (Container)  │
+        | (IN Progress)|
         └──────────────┘
+```
 
 ---
 
@@ -108,7 +111,7 @@ The pipeline is fully automated — from code commit to deployment — including
 
 ---
 
-## 🔁 Auto Deployment (In progress)
+## 🔁 Auto Deployment -> (IN Progress)
 
 * Every commit triggers:
 
@@ -158,7 +161,7 @@ The pipeline is fully automated — from code commit to deployment — including
 * Implement zero-downtime deployment
 * Add monitoring (Prometheus + Grafana)
 * Automate rollback
-  
+
 ---
 
 ## ⭐ Key Highlights
