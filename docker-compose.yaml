@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   java-maven-build:
-    image: brajbelivee/demo-java-maven-build:jma-1.0
+    image: brajbelivee/demo-java-maven-build:${TAG}
     ports:
       - 8080:8080
   

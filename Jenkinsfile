@@ -54,11 +54,15 @@ pipeline {
             steps {
                 script{
                     echo "deploying the app"
-                    def dockerComposeCmd= "docker compose -f docker-compose.yaml up --detach"
-                    //def dockerCmd = "docker run -p 8080:8080 -d brajbelivee/demo-java-maven-build:${IMAGE_NAME}"
+                    //def dockerComposeCmd= "docker compose -f docker-compose.yaml up --detach" ->(version one of compose version 2 is below)
+                      def shellcmd = "bash ./server-cmd.sh ${IMAGE_NAME}"
+                      
+                    //def dockerCmd = "docker run -p 8080:8080 -d brajbelivee/demo-java-maven-build:${IMAGE_NAME}" ->(for docker run cmd )
                     sshagent(['ssh-agent-keys']) {
                         sh "scp docker-compose.yaml ubuntu@16.171.172.111:/home/ubuntu"
-                        sh "ssh -o StrictHostKeyChecking=no ubuntu@16.171.172.111 ${dockerComposeCmd}"
+                        sh "scp server-cmd.sh ubuntu@16.171.172.111:/home/ubuntu"
+                        sh "ssh -o StrictHostKeyChecking=no ubuntu@16.171.172.111 ${shellcmd}"
+                        //sh "ssh -o StrictHostKeyChecking=no ubuntu@16.171.172.111 ${dockerComposeCmd}"
                         //sh "ssh -o StrictHostKeyChecking=no ubuntu@16.171.172.111 ${dockerCmd}" 
                     }
                 }
