@@ -1,0 +1,14 @@
+version: '5'
+services:
+  java-maven-build:
+    image: brajbelivee/demo-java-maven-build:1.0
+    ports:
+      - 8080:8080
+  
+  postgres:
+    image: postgres:16.1
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: pass
+    

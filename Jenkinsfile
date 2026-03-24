@@ -54,9 +54,12 @@ pipeline {
             steps {
                 script{
                     echo "deploying the app"
-                    def dockerCmd = "docker run -p 8080:8080 -d brajbelivee/demo-java-maven-build:${IMAGE_NAME}"
+                    def dockerCompose= "docker-compose -f docker-compose.yaml up --detach"
+                    //def dockerCmd = "docker run -p 8080:8080 -d brajbelivee/demo-java-maven-build:${IMAGE_NAME}"
                     sshagent(['ssh-agent-keys']) {
-                        sh "ssh -o StrictHostKeyChecking=no ubuntu@16.171.172.111 ${dockerCmd}"
+                        sh "scp docker-compose.yaml ubuntu@16.171.172.111:/home/ubuntu"
+                        sh "ssh -o StrictHostKeyChecking=no ubuntu@16.171.172.111 ${dockerCompose}"
+                        //sh "ssh -o StrictHostKeyChecking=no ubuntu@16.171.172.111 ${dockerCmd}" 
                     }
                 }
             }
