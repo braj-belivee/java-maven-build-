@@ -23,8 +23,6 @@ pipeline {
             steps {
 
                 echo 'building the application'
-                echo 'testing multi branch and normal pipeline both'
-                echo "testing feature payment branch commits"
 
                 script{
                     echo "building the app"
@@ -34,10 +32,10 @@ pipeline {
             }
         }
 
-        stage ("build imgae"){
+        stage ("build image"){
             steps {
 
-                echo 'testing the app'
+                echo 'building the image'
 
                 script{
                     echo "building the docker image"
@@ -56,6 +54,10 @@ pipeline {
             steps {
                 script{
                     echo "deploying the app"
+                    def dockerCmd = 'docker run -d -p 3000:80 brajbelivee/docker-react:1.0'
+                    sshagent(['ssh-agent-keys']) {
+                        sh "ssh -o StrictHostKeyChecking=no ubuntu@16.171.172.111 ${dockerCmd}"
+                    }
                 }
             }
         }
