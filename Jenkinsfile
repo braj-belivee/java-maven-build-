@@ -54,7 +54,7 @@ pipeline {
             steps {
                 script{
                     echo "deploying the app"
-                    def dockerCmd = 'docker run -d -p 3000:80 brajbelivee/demo-java-maven-build:1.1.33-54'
+                    def dockerCmd = 'docker run -d -p 8080:8080 brajbelivee/demo-java-maven-build:1.1.33-54'
                     sshagent(['ssh-agent-keys']) {
                         sh "ssh -o StrictHostKeyChecking=no ubuntu@16.171.172.111 ${dockerCmd}"
                     }
